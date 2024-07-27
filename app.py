@@ -12,9 +12,9 @@ import threading
 app = Flask(__name__)
 
 #create endpoint get /
-@app.route('/')
-def hello():
-    return "Hello World!"
+# @app.route('/')
+# def hello():
+#     return "Hello World!"
 
 #create endpoint post /recommend with return of dummy data already define in json format
 @app.route('/recommend', methods=['POST'])
@@ -101,6 +101,7 @@ def save_to_bigquery(data, target_project, target_dataset, target_table):
     return result 
 
 #function write ke bq table using cron job, authentication using GOOGLE_APPLICATION_CREDENTIALS. cron job will running every hour and there will be a logic to define variable time = {breakfast(5.00), lunch(11.00), teatime (15.00), dinner(18.00), supper (22.00)} based on current time
+@app.route('/')
 def write_to_bq():
     #define time based on current time breakfast (5-11), lunch (11-15), teatime (15-18), dinner (18-22), supper (22-5)
     current_hour = datetime.now().hour
@@ -117,7 +118,6 @@ def write_to_bq():
 
     # Define the project ID
     project_id = 'hack-jakarta'
-
 
     # Define the data to be inserted for multiple user and each user have 10 food recommendations
     data = [
@@ -218,8 +218,7 @@ def write_to_bq():
     ]
     # Flatten the data
     flattened_data = pd.DataFrame(data)
-    result = save_to_bigquery(flattened_data, 'hack-jakarta', 'hackjakarta', 'recommendation')
-    print("Result of the operation: ", result)
+    save_to_bigquery(flattened_data, 'hack-jakarta', 'hackjakarta', 'recommendation')
     
 def run_schedule():
     while True:
