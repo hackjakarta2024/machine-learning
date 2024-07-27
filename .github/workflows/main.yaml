@@ -10,18 +10,18 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
-          
+
       - name: Login to Dockerhub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
+
       - name: Build and push Docker image
         run: |
           docker build -t qais004/hackjkt-ml:latest .
           docker push qais004/hackjkt-ml:latest
-      
+
       - name: Deploy to Compute Engine
         uses: appleboy/ssh-action@master
         env:
@@ -32,8 +32,8 @@ jobs:
           key: ${{ secrets.VPS_PK }}
           envs: GOOGLE_APPLICATION_CREDENTIALS
           script: |
-            echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > /tmp/google-credentials.json
-            cat /tmp/google-credentials.json  # Check if the file is written correctly
+            echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' | base64 --decode > /tmp/google-credentials.json
+            cat /tmp/google-credentials.json  # Verify the content of the credentials file
             docker pull qais004/hackjkt-ml:latest
             docker stop hackjkt-ml || true
             docker rm hackjkt-ml || true
@@ -43,4 +43,4 @@ jobs:
               -e GOOGLE_APPLICATION_CREDENTIALS="/credentials/google-credentials.json" \
               -v /tmp/google-credentials.json:/credentials/google-credentials.json \
               qais004/hackjkt-ml
-            docker exec -it hackjkt-ml sh -c "ls -l /credentials && cat /credentials/google-credentials.json"  # Check the file inside the container
+            docker exec -it hackjkt-ml sh -c "ls -l /credentials && cat /credentials/google-credentials.json"  # Verify the file inside the container
