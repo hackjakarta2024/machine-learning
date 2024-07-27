@@ -118,7 +118,7 @@ def write_to_bq():
     data = [
         {
             'user_id': '290fbc73-84f1-4a09-aa1f-1b09bbc2539e',
-            'promo_id': '2e6f4c5c-85va-4cd6-85f2-6d5f6a4d7c5f',
+            'promo_id': '03990610-f220-4cf2-9e2e-e9b5f63f90ab',
             'period': period,
             'food_recommendations': [
                 {
@@ -165,7 +165,7 @@ def write_to_bq():
         },
         {
             'user_id': '65add329-203e-43e0-816e-5f1915720e3b',
-            'promo_id': '2e6f4c5c-85va-4cd6-85f2-6d5f6a4d7c5f',
+            'promo_id': '03990610-f220-4cf2-9e2e-e9b5f63f90ab',
             'period': period,
             'food_recommendations': [
                 {
