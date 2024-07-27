@@ -40,43 +40,43 @@ def recommend():
             "period": period,
             "food_recommendations": [
                 {
-                    "food_id": "2e6f4c2c-85ea-4cd6-85f2-6d5f6a4d7c5f",
+                    "food_id": "a8e9bce3-3444-4904-a7f5-a89b7d30735c",
                     "description": "Nasi Goreng",
                 },
                 {
-                    "food_id": "2e6f4c2c-85ea-4cd6-84f2-6d5f6a4d7c5f",
+                    "food_id": "59f90db3-d84f-4509-a088-93f7a2857e3e",
                     "description": "Mie Goreng",
                 },
                 {
-                    "food_id": "2e6f4c2c-85ea-4cd6-83f2-6d5f6a4d7c5f",
+                    "food_id": "dd4c3b19-a4fb-40ea-8cb0-fb4c2fdbdcbd",
                     "description": "Ayam Goreng",
                 },
                 {
-                    "food_id": "2e6f4c2c-85ea-4cd6-82f2-6d5f6a4d7c5f",
+                    "food_id": "6b300f18-a057-4b92-84e0-7fa7ac10891e",
                     "description": "Nasi Goreng Seafood",
                 },
                 {
-                    "food_id": "2e6f4c2c-85ea-4cd6-81f2-6d5f6a4d7c5f",
+                    "food_id": "35abfb33-ed29-4c29-9cfb-7827937e158f",
                     "description": "Nasi Goreng Ayam",
                 },
                 {
-                    "food_id": "2e6f4c2c-85ea-4cd6-80f2-6d5f6a4d7c5f",
+                    "food_id": "8f698978-1b45-4f1f-9663-d02adfb050a5",
                     "description": "Nasi Goreng Seafood",
                 },
                 {
-                    "food_id": "2e6f4c2c-85ea-4cd6-79f2-6d5f6a4d7c5f",
+                    "food_id": "010c0ec5-0f30-47ec-85f3-0aa945ed0d9f",
                     "description": "Nasi Goreng Ayam",
                 },
                 {
-                    "food_id": "2e6f4c2c-85ea-4cd6-78f2-6d5f6a4d7c5f",
+                    "food_id": "0d742318-ad53-4596-b68f-a53f5f616686",
                     "description": "Nasi Goreng Seafood",
                 },
                 {
-                    "food_id": "2e6f4c2c-85ea-4cd6-77f2-6d5f6a4d7c5f",
+                    "food_id": "cac16bd8-392a-4817-ac7c-196acada111b",
                     "description": "Nasi Goreng Ayam",
                 },
                 {
-                    "food_id": "2e6f4c2c-85ea-4cd6-76f2-6d5f6a4d7c5f",
+                    "food_id": "588c487c-d496-4560-b2a5-a38a7871be1b",
                     "description": "Nasi Goreng Seafood",
                 }
             ]
@@ -117,96 +117,96 @@ def write_to_bq():
     # Define the data to be inserted for multiple user and each user have 10 food recommendations
     data = [
         {
-            'user_id': 'user1',
+            'user_id': '290fbc73-84f1-4a09-aa1f-1b09bbc2539e',
             'promo_id': '2e6f4c5c-85va-4cd6-85f2-6d5f6a4d7c5f',
             'period': period,
             'food_recommendations': [
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-85f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng',
+                    "food_id": "a8e9bce3-3444-4904-a7f5-a89b7d30735c",
+                    "description": "Nasi Goreng",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-84f2-6d5f6a4d7c5f',
-                    'description': 'Mie Goreng',
+                    "food_id": "59f90db3-d84f-4509-a088-93f7a2857e3e",
+                    "description": "Mie Goreng",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-83f2-6d5f6a4d7c5f',
-                    'description': 'Ayam Goreng',
+                    "food_id": "dd4c3b19-a4fb-40ea-8cb0-fb4c2fdbdcbd",
+                    "description": "Ayam Goreng",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-82f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Seafood',
+                    "food_id": "6b300f18-a057-4b92-84e0-7fa7ac10891e",
+                    "description": "Nasi Goreng Seafood",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-81f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Ayam',
+                    "food_id": "35abfb33-ed29-4c29-9cfb-7827937e158f",
+                    "description": "Nasi Goreng Ayam",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-80f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Seafood',
+                    "food_id": "8f698978-1b45-4f1f-9663-d02adfb050a5",
+                    "description": "Nasi Goreng Seafood",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-79f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Ayam',
+                    "food_id": "010c0ec5-0f30-47ec-85f3-0aa945ed0d9f",
+                    "description": "Nasi Goreng Ayam",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-78f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Seafood',
+                    "food_id": "0d742318-ad53-4596-b68f-a53f5f616686",
+                    "description": "Nasi Goreng Seafood",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-77f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Ayam',
+                    "food_id": "cac16bd8-392a-4817-ac7c-196acada111b",
+                    "description": "Nasi Goreng Ayam",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-76f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Seafood',
+                    "food_id": "588c487c-d496-4560-b2a5-a38a7871be1b",
+                    "description": "Nasi Goreng Seafood",
                 }
             ]
         },
         {
-            'user_id': 'user2',
+            'user_id': '65add329-203e-43e0-816e-5f1915720e3b',
             'promo_id': '2e6f4c5c-85va-4cd6-85f2-6d5f6a4d7c5f',
             'period': period,
             'food_recommendations': [
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-85f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng',
+                    "food_id": "a8e9bce3-3444-4904-a7f5-a89b7d30735c",
+                    "description": "Nasi Goreng",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-84f2-6d5f6a4d7c5f',
-                    'description': 'Mie Goreng',
+                    "food_id": "59f90db3-d84f-4509-a088-93f7a2857e3e",
+                    "description": "Mie Goreng",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-83f2-6d5f6a4d7c5f',
-                    'description': 'Ayam Goreng',
+                    "food_id": "dd4c3b19-a4fb-40ea-8cb0-fb4c2fdbdcbd",
+                    "description": "Ayam Goreng",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-82f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Seafood',
+                    "food_id": "6b300f18-a057-4b92-84e0-7fa7ac10891e",
+                    "description": "Nasi Goreng Seafood",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-81f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Ayam',
+                    "food_id": "35abfb33-ed29-4c29-9cfb-7827937e158f",
+                    "description": "Nasi Goreng Ayam",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-80f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Seafood',
+                    "food_id": "8f698978-1b45-4f1f-9663-d02adfb050a5",
+                    "description": "Nasi Goreng Seafood",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-79f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Ayam',
+                    "food_id": "010c0ec5-0f30-47ec-85f3-0aa945ed0d9f",
+                    "description": "Nasi Goreng Ayam",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-78f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Seafood',
+                    "food_id": "0d742318-ad53-4596-b68f-a53f5f616686",
+                    "description": "Nasi Goreng Seafood",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-77f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Ayam',
+                    "food_id": "cac16bd8-392a-4817-ac7c-196acada111b",
+                    "description": "Nasi Goreng Ayam",
                 },
                 {
-                    'food_id': '2e6f4c2c-85ea-4cd6-76f2-6d5f6a4d7c5f',
-                    'description': 'Nasi Goreng Seafood',
+                    "food_id": "588c487c-d496-4560-b2a5-a38a7871be1b",
+                    "description": "Nasi Goreng Seafood",
                 }
             ]
         }
@@ -221,7 +221,7 @@ def run_schedule():
         time.sleep(1)
 
 #schedule cron job to run every hour
-schedule.every(15).seconds.do(write_to_bq)
+schedule.every(30).seconds.do(write_to_bq)
 
 # Start the schedule in a separate thread
 t = threading.Thread(target=run_schedule)
