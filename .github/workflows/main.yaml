@@ -32,6 +32,7 @@ jobs:
           key: ${{ secrets.VPS_PK }}
           envs: GOOGLE_APPLICATION_CREDENTIALS
           script: |
+            sudo su
             echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}'
             rm -r /tmp/google-credentials.json
             echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > /tmp/google-credentials.json
