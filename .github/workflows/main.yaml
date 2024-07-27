@@ -24,23 +24,25 @@ jobs:
       
       - name: Deploy to Compute Engine
         uses: appleboy/ssh-action@master
-        # env:
+        env:
         #     GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         #     GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-        #     GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+              GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         #     GOOGLE_CSE_ID: $ {{ secrets.GOOGLE_CSE_ID }}
         with:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_PK }}
-          # envs: GEMINI_API_KEY, GOOGLE_API_KEY, GOOGLE_APPLICATION_CREDENTIALS, GOOGLE_CSE_ID
+          envs: GOOGLE_APPLICATION_CREDENTIALS
           script: |
+            echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > /tmp/GOOGLE_APPLICATION_CREDENTIALS.json
             docker pull qais004/hackjkt-ml:latest
             docker stop hackjkt-ml
             docker rm hackjkt-ml
             docker run -d \
             --name hackjkt-ml \
             -p 5000:3000 \
+            -v /tmp/GOOGLE_APPLICATION_CREDENTIALS.json:/credentials/GOOGLE_APPLICATION_CREDENTIALS.json \
             qais004/hackjkt-ml
 
             
