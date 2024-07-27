@@ -25,10 +25,7 @@ jobs:
       - name: Deploy to Compute Engine
         uses: appleboy/ssh-action@master
         env:
-        #     GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        #     GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-              GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        #     GOOGLE_CSE_ID: $ {{ secrets.GOOGLE_CSE_ID }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         with:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
@@ -36,15 +33,14 @@ jobs:
           envs: GOOGLE_APPLICATION_CREDENTIALS
           script: |
             echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > /tmp/google-credentials.json
+            cat /tmp/google-credentials.json  # Check if the file is written correctly
             docker pull qais004/hackjkt-ml:latest
-            docker stop hackjkt-ml
-            docker rm hackjkt-ml
+            docker stop hackjkt-ml || true
+            docker rm hackjkt-ml || true
             docker run -d \
-            --name hackjkt-ml \
-            -p 5000:3000 \
-            -e GOOGLE_APPLICATION_CREDENTIALS="/credentials/google-credentials.json" \
-            -v /tmp/google-credentials.json:/credentials/google-credentials.json \
-            qais004/hackjkt-ml
-
-            
-          
+              --name hackjkt-ml \
+              -p 5000:3000 \
+              -e GOOGLE_APPLICATION_CREDENTIALS="/credentials/google-credentials.json" \
+              -v /tmp/google-credentials.json:/credentials/google-credentials.json \
+              qais004/hackjkt-ml
+            docker exec -it hackjkt-ml sh -c "ls -l /credentials && cat /credentials/google-credentials.json"  # Check the file inside the container
