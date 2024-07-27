@@ -25,13 +25,14 @@ jobs:
       - name: Deploy to Compute Engine
         uses: appleboy/ssh-action@master
         env:
-          GOOGLE_CREDENTIALS: ${{ secrets.ENCODED_GOOGLE_CREDENTIALS }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         with:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_PK }}
+          envs: GOOGLE_APPLICATION_CREDENTIALS
           script: |
-            echo $GOOGLE_CREDENTIALS | base64 --decode > /tmp/google-credentials.json
+            echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > /tmp/google-credentials.json
             docker pull qais004/hackjkt-ml:latest
             docker stop hackjkt-ml
             docker rm hackjkt-ml
