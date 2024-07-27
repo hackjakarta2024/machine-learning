@@ -224,10 +224,10 @@ def write_to_bq():
 def run_schedule():
     while True:
         schedule.run_pending()
-        time.sleep(15)
+        time.sleep(1)
 
 #schedule cron job to run every hour
-schedule.every().hour.do(write_to_bq)
+schedule.every(15).seconds.do(write_to_bq)
 
 # Start the schedule in a separate thread
 t = threading.Thread(target=run_schedule)
