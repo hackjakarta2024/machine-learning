@@ -38,4 +38,4 @@ jobs:
             -p 5000:3000 \
             -e GOOGLE_APPLICATION_CREDENTIALS="/home/hack-jakarta-sa.json" \
             -v /home/hack-jakarta-sa.json:/home/hack-jakarta-sa.json \
-            qais004/hackjkt-ml /bin/sh -c "echo \$GOOGLE_APPLICATION_CREDENTIALS"
+            qais004/hackjkt-ml
