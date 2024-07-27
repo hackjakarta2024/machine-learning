@@ -1,17 +1,2 @@
 Flask==2.2.2
-langchain==0.1.16
-langchain_community==0.0.34
-langchain_core==0.1.45
-langchain_google_community==1.0.2
-langchain_google_vertexai==1.0.1
-langchain_text_splitters==0.0.1
-protobuf
-newspaper3k
 gunicorn
-google.generativeai
-google
-Werkzeug==2.2.2
-numpy
-implicit
-scipy
-pandas_gbq
