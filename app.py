@@ -97,7 +97,9 @@ def save_to_bigquery(data, target_project, target_dataset, target_table):
     dataset_ref = client.dataset(target_dataset)
     table_ref = dataset_ref.table(target_table)
     job = client.load_table_from_dataframe(data, table_ref, location="asia-southeast2", job_config=job_config)
-    job.result() # wait for the job to complete then proceed next code
+    result = job.result() # wait for the job to complete then proceed next code
+    print("Data saved to BigQuery successfully.")
+    return result 
 
 
 #function write ke bq table using cron job, authentication using GOOGLE_APPLICATION_CREDENTIALS. cron job will running every hour and there will be a logic to define variable time = {breakfast(5.00), lunch(11.00), teatime (15.00), dinner(18.00), supper (22.00)} based on current time
@@ -218,12 +220,13 @@ def write_to_bq():
     ]
     # Flatten the data
     flattened_data = pd.DataFrame(data)
-    save_to_bigquery(flattened_data, 'hack-jakarta', 'hackjakarta', 'recommendation')
+    result = save_to_bigquery(flattened_data, 'hack-jakarta', 'hackjakarta', 'recommendation')
+    print("Result of the operation: ", result)
     
 def run_schedule():
     while True:
         schedule.run_pending()
-        time.sleep(1)
+        time.sleep(15)
 
 #schedule cron job to run every hour
 schedule.every().hour.do(write_to_bq)
