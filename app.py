@@ -87,7 +87,6 @@ def recommend():
             ]
         }
     })
-    
 
 def save_to_bigquery(data, target_project, target_dataset, target_table):
     job_config = bigquery.LoadJobConfig(
@@ -100,7 +99,6 @@ def save_to_bigquery(data, target_project, target_dataset, target_table):
     result = job.result() # wait for the job to complete then proceed next code
     print("Data saved to BigQuery successfully.")
     return result 
-
 
 #function write ke bq table using cron job, authentication using GOOGLE_APPLICATION_CREDENTIALS. cron job will running every hour and there will be a logic to define variable time = {breakfast(5.00), lunch(11.00), teatime (15.00), dinner(18.00), supper (22.00)} based on current time
 def write_to_bq():

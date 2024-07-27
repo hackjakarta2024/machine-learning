@@ -35,14 +35,15 @@ jobs:
           key: ${{ secrets.VPS_PK }}
           envs: GOOGLE_APPLICATION_CREDENTIALS
           script: |
-            echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > /tmp/GOOGLE_APPLICATION_CREDENTIALS.json
+            echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > /tmp/google-credentials.json
             docker pull qais004/hackjkt-ml:latest
             docker stop hackjkt-ml
             docker rm hackjkt-ml
             docker run -d \
             --name hackjkt-ml \
             -p 5000:3000 \
-            -v /tmp/GOOGLE_APPLICATION_CREDENTIALS.json:/credentials/GOOGLE_APPLICATION_CREDENTIALS.json \
+            -e GOOGLE_APPLICATION_CREDENTIALS="/credentials/google-credentials.json" \
+            -v /tmp/google-credentials.json:/credentials/google-credentials.json \
             qais004/hackjkt-ml
 
             
