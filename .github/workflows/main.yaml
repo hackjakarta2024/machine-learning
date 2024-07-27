@@ -1,0 +1,55 @@
+name: Deploy to Compute Engine
+
+on:
+  push:
+    branches:
+      - machine-learning
+
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+          
+      - name: Login to Dockerhub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Build and push Docker image
+        run: |
+          docker build -t gemm123/rag-bytes:latest .
+          docker push gemm123/rag-bytes:latest
+      
+      - name: Deploy to Compute Engine
+        uses: appleboy/ssh-action@master
+        env:
+            GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+            GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+            GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+            GOOGLE_CSE_ID: $ {{ secrets.GOOGLE_CSE_ID }}
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_PK }}
+          envs: GEMINI_API_KEY, GOOGLE_API_KEY, GOOGLE_APPLICATION_CREDENTIALS, GOOGLE_CSE_ID
+          script: |
+            echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > /tmp/google-credentials.json
+            docker pull gemm123/rag-bytes:latest
+            docker stop rag-bytes
+            docker rm rag-bytes
+            docker run -d \
+            --name rag-bytes \
+            -p 5000:3000 \
+            -e GEMINI_API_KEY="$GEMINI_API_KEY" \
+            -e GOOGLE_API_KEY="$GOOGLE_API_KEY" \
+            -e GOOGLE_APPLICATION_CREDENTIALS="/credentials/google-credentials.json" \
+            -e GOOGLE_CSE_ID="$GOOGLE_CSE_ID" \
+            -v /tmp/google-credentials.json:/credentials/google-credentials.json \
+            gemm123/rag-bytes
+
+            
+          
