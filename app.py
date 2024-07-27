@@ -7,6 +7,7 @@ import schedule
 import time
 from datetime import datetime
 import pandas as pd
+import threading
 
 app = Flask(__name__)
 
@@ -219,13 +220,19 @@ def write_to_bq():
     flattened_data = pd.DataFrame(data)
     save_to_bigquery(flattened_data, 'hack-jakarta', 'hackjakarta', 'recommendation')
     
+def run_schedule():
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
 #schedule cron job to run every hour
 schedule.every().hour.do(write_to_bq)
 
-#run the cron job
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+# Start the schedule in a separate thread
+t = threading.Thread(target=run_schedule)
+# Set the thread as daemon so it will end when the main program ends
+t.setDaemon(True)
+t.start()
 
 if __name__ == '__main__':
     app.run( debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 3000)) )
