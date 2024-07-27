@@ -11,11 +11,6 @@ import threading
 
 app = Flask(__name__)
 
-#create endpoint get /
-# @app.route('/')
-# def hello():
-#     return "Hello World!"
-
 #create endpoint post /recommend with return of dummy data already define in json format
 @app.route('/recommend', methods=['POST'])
 def recommend():
