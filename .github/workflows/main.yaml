@@ -32,6 +32,8 @@ jobs:
           key: ${{ secrets.VPS_PK }}
           envs: GOOGLE_APPLICATION_CREDENTIALS
           script: |
+            echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}'
+            rm -r /tmp/google-credentials.json
             echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' > /tmp/google-credentials.json
             docker pull qais004/hackjkt-ml:latest
             docker stop hackjkt-ml
