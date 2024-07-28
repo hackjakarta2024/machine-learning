@@ -161,6 +161,7 @@ def search():
 def write_to_bq():
     #define time based on current time breakfast (5-11), lunch (11-15), teatime (15-18), dinner (18-22), supper (22-5)
     current_hour = datetime.now().hour
+    print("Current Hour: ", current_hour)
     if current_hour >= 5 and current_hour < 11:
         period = 'breakfast'
     elif current_hour >= 11 and current_hour < 15:
