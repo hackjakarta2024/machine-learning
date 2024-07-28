@@ -5,6 +5,7 @@ RUN pip install --upgrade pip
 ENV PYTHONUNBUFFERED True
 ENV HOST 0.0.0.0
 ENV PORT 3000
+ENV TZ=Etc/GMT-7
 
 RUN apt-get update && apt-get install -y \
     curl \
