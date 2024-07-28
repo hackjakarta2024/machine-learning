@@ -112,43 +112,43 @@ def search():
             "food_recommendations": [
                 {
                     "food_id": "a8e9bce3-3444-4904-a7f5-a89b7d30735c",
-                    "description": "Nasi Goreng",
+                    "desc": "Nasi Goreng",
                 },
                 {
                     "food_id": "59f90db3-d84f-4509-a088-93f7a2857e3e",
-                    "description": "Mie Goreng",
+                    "desc": "Mie Goreng",
                 },
                 {
                     "food_id": "dd4c3b19-a4fb-40ea-8cb0-fb4c2fdbdcbd",
-                    "description": "Ayam Goreng",
+                    "desc": "Ayam Goreng",
                 },
                 {
                     "food_id": "6b300f18-a057-4b92-84e0-7fa7ac10891e",
-                    "description": "Nasi Goreng Seafood",
+                    "desc": "Nasi Goreng Seafood",
                 },
                 {
                     "food_id": "35abfb33-ed29-4c29-9cfb-7827937e158f",
-                    "description": "Nasi Goreng Ayam",
+                    "desc": "Nasi Goreng Ayam",
                 },
                 {
                     "food_id": "8f698978-1b45-4f1f-9663-d02adfb050a5",
-                    "description": "Nasi Goreng Seafood",
+                    "desc": "Nasi Goreng Seafood",
                 },
                 {
                     "food_id": "010c0ec5-0f30-47ec-85f3-0aa945ed0d9f",
-                    "description": "Nasi Goreng Ayam",
+                    "desc": "Nasi Goreng Ayam",
                 },
                 {
                     "food_id": "0d742318-ad53-4596-b68f-a53f5f616686",
-                    "description": "Nasi Goreng Seafood",
+                    "desc": "Nasi Goreng Seafood",
                 },
                 {
                     "food_id": "cac16bd8-392a-4817-ac7c-196acada111b",
-                    "description": "Nasi Goreng Ayam",
+                    "desc": "Nasi Goreng Ayam",
                 },
                 {
                     "food_id": "588c487c-d496-4560-b2a5-a38a7871be1b",
-                    "description": "Nasi Goreng Seafood",
+                    "desc": "Nasi Goreng Seafood",
                 }
             ]
         }
