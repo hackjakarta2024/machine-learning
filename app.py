@@ -159,18 +159,18 @@ def search():
 #function write ke bq table using cron job, authentication using GOOGLE_APPLICATION_CREDENTIALS. cron job will running every hour and there will be a logic to define variable time = {breakfast(5.00), lunch(11.00), teatime (15.00), dinner(18.00), supper (22.00)} based on current time
 @app.route('/')
 def write_to_bq():
-    #define time based on current time breakfast (5-11), lunch (11-15), teatime (15-18), dinner (18-22), supper (22-5)
+    #define time based on current time breakfast (5), lunch (11), teatime (15), dinner (18), supper (22)
     current_hour = datetime.now().hour
     print("Current Hour: ", current_hour)
-    if current_hour >= 5 and current_hour < 11:
+    if current_hour == 5:
         period = 'breakfast'
-    elif current_hour >= 11 and current_hour < 15:
+    elif current_hour == 11:
         period = 'lunch'
-    elif current_hour >= 15 and current_hour < 18:
+    elif current_hour == 15:
         period = 'teatime'
-    elif current_hour >= 18 and current_hour < 22:
+    elif current_hour == 18:
         period = 'dinner'
-    else:
+    elif current_hour == 22:
         period = 'supper'
 
     # Define the project ID
@@ -283,6 +283,8 @@ def run_schedule():
         time.sleep(1)
 
 #schedule cron job to run every hour
+# schedule.every().hour.do(write_to_bq)
+
 schedule.every(30).seconds.do(write_to_bq)
 
 # Start the schedule in a separate thread
